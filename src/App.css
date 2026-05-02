@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  --crt-green: #00FF41;
+  --crt-dark-green: #008F11;
+  --crt-darker-green: #003B00;
+  --crt-black: #0A0A0A;
+  --crt-glow: 0 0 10px #00FF41;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: var(--crt-green);
+  font-family: 'Orbitron', monospace;
+  min-height: 100vh;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* CRT эффекты */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg, rgba(0, 255, 65, 0.03) 0px, rgba(0, 255, 65, 0.03) 2px, transparent 2px, transparent 4px);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.crt-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 255, 65, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 99;
+}
+
+.crt-flicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 101;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.97; }
+}
+
+/* Монитор */
+.monitor-frame {
+  width: 100%;
+  min-height: calc(100vh - 20px);
+  position: relative;
+  z-index: 2;
+  background: #0A0A0A;
+  border: 2px solid var(--crt-green);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3), inset 0 0 30px #003B00;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+/* Заголовок */
+.system-header {
+  border-bottom: 2px solid var(--crt-green);
+  padding: 12px 0;
+  margin-bottom: 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px var(--crt-green);
+  background: linear-gradient(45deg, var(--crt-green), var(--crt-dark-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header-status {
+  display: flex;
+  gap: 20px;
+  font-size: 10px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-icon {
+  color: var(--crt-dark-green);
+}
+
+.status-value {
+  color: var(--crt-green);
+}
+
+.subtitle {
+  font-size: 9px;
+  color: var(--crt-dark-green);
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Системные сообщения */
+.system-messages {
+  background: #003B00;
+  border: 1px solid var(--crt-green);
+  padding: 10px;
+  margin-bottom: 20px;
+  min-height: 60px;
+  font-size: 10px;
+  font-family: monospace;
+}
+
+.system-line {
+  margin-bottom: 3px;
+  color: var(--crt-green);
+}
+
+/* Карточки статистики */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid var(--crt-dark-green);
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--crt-green);
+  box-shadow: 0 0 10px var(--crt-green);
+}
+
+.stat-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--crt-green);
+}
+
+.stat-label {
+  font-size: 9px;
+  color: var(--crt-dark-green);
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+/* График */
+.chart-container {
+  background: rgba(0, 255, 65, 0.03);
+  border: 1px solid var(--crt-dark-green);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.chart-title {
+  margin-bottom: 15px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* Кнопки */
+.control-panel {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.crt-button {
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid var(--crt-green);
+  color: var(--crt-green);
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.crt-button:hover {
+  background: var(--crt-green);
+  color: black;
+  box-shadow: 0 0 10px var(--crt-green);
+}
+
+.crt-button-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: white;
+  color: white;
+}
+
+.file-info {
+  text-align: center;
+  font-size: 9px;
+  color: var(--crt-dark-green);
+  margin-bottom: 20px;
+}
+
+/* AI вывод */
+.ai-output {
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid var(--crt-green);
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.ai-title {
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.ai-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Футер */
+.system-footer {
+  border-top: 1px solid var(--crt-green);
+  padding: 12px 0;
+  text-align: center;
+  font-size: 7px;
+  color: var(--crt-dark-green);
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .logo {
+    font-size: 18px;
+  }
+  
+  .monitor-frame {
+    padding: 15px;
+  }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #003B00;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--crt-green);
+}
